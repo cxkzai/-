@@ -1,0 +1,189 @@
+/* 全局样式 */
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 导航栏样式 */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff !important;
+}
+
+/* 卡片样式 */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-radius: 15px 15px 0 0 !important;
+}
+
+/* 按钮样式 */
+.btn {
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* 题目容器样式 */
+.question-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.question-text {
+    color: #2c3e50;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+/* 题目图形样式 */
+.question-image {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.question-image svg {
+    max-width: 300px;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 选项样式 */
+.form-check {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.form-check:hover {
+    background-color: #f8f9fa;
+}
+
+.form-check-input {
+    margin-top: 0.3em;
+}
+
+.form-check-label {
+    margin-left: 10px;
+    color: #495057;
+}
+
+.options .form-check {
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.options .form-check:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.options .form-check-input {
+    margin-top: 10px;
+}
+
+.options .form-check-label {
+    display: block;
+    cursor: pointer;
+}
+
+.options .form-check-label svg {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+.options .form-check-input:checked + .form-check-label {
+    background-color: #e3f2fd;
+    border-radius: 8px;
+}
+
+/* 计时器样式 */
+#timer {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #dc3545;
+}
+
+/* 模态框样式 */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    background-color: #f8f9fa;
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    background-color: #f8f9fa;
+    border-radius: 0 0 15px 15px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .card {
+        margin: 10px 0;
+    }
+    
+    .btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

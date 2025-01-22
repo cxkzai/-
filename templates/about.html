@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">关于我们</h3>
+                </div>
+                <div class="card-body">
+                    <div class="about-section">
+                        <h4 class="mb-4">智商测试系统 v0.8</h4>
+                        
+                        <div class="mb-4">
+                            <h5 class="text-primary">系统简介</h5>
+                            <p>我们的智商测试系统是一个专业的在线IQ评估平台，引用国际IQ测试评估标准和原创题库，致力于为用户提供科学、准确的智商测试服务。</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="text-primary">测试特点</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>提供普通测试和精准测试两种模式</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>题库涵盖逻辑推理、空间认知等多个维度</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>科学的评分系统和详细的结果分析</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>完整的测试历史记录和进度追踪</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="text-primary">联系方式</h5>
+                            <p><i class="fas fa-envelope me-2"></i>邮箱：1298488107@qq.com</p>
+                            <p><i class="fas fa-phone me-2"></i>QQ：1298488107</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="text-primary">版本信息</h5>
+                            <p><i class="fas fa-code-branch me-2"></i>当前版本：v0.8</p>
+                            <p><i class="fas fa-calendar-alt me-2"></i>更新日期：2025-01-21</p>
+                        </div>
+
+                        <div>
+                            <h5 class="text-primary">免责声明</h5>
+                            <p class="small text-muted">本系统提供的测试结果仅供参考，不作为任何正式评估的依据。最终解释权归张益达个人开发者所有。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.about-section {
+    font-size: 1.1rem;
+}
+
+.about-section h5 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.about-section ul li {
+    padding: 0.5rem 0;
+}
+
+.about-section i {
+    width: 20px;
+    text-align: center;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    padding: 1.5rem;
+}
+</style>
+{% endblock %} 

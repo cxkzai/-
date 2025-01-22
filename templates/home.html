@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12 text-center mb-4">
+            <h2>欢迎回来，{{ current_user.username }}</h2>
+            <p class="lead">选择测试类型开始你的IQ之旅</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <!-- 普通测试卡片 -->
+        <div class="col-md-6">
+            <div class="card mb-4 test-card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="card-title mb-0">普通测试</h4>
+                </div>
+                <div class="card-body">
+                    <div class="feature-list mb-4">
+                        <div class="feature-item">
+                            <i class="fas fa-tasks"></i>
+                            <span>40道精选题目</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>时间限制：60分钟</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>适合快速评估</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-brain"></i>
+                            <span>包含图形和数字规律</span>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('start_test', test_type='normal') }}" class="btn btn-primary btn-lg btn-block w-100">
+                        开始普通测试
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 精准测试卡片 -->
+        <div class="col-md-6">
+            <div class="card mb-4 test-card">
+                <div class="card-header bg-success text-white">
+                    <h4 class="card-title mb-0">精准测试</h4>
+                </div>
+                <div class="card-body">
+                    <div class="feature-list mb-4">
+                        <div class="feature-item">
+                            <i class="fas fa-tasks"></i>
+                            <span>80道精选题目</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>时间限制：90分钟</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>更精准的评估结果</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-brain"></i>
+                            <span>全面的能力测评</span>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('start_test', test_type='premium') }}" class="btn btn-success btn-lg btn-block w-100">
+                        开始精准测试
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if recent_results %}
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">最近测试记录</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>测试时间</th>
+                                    <th>测试类型</th>
+                                    <th>IQ得分</th>
+                                    <th>用时</th>
+                                    <th>正确率</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for result in recent_results %}
+                                <tr>
+                                    <td>{{ result.completed_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>
+                                        {% if result.test_type == 'premium' %}
+                                            <span class="badge bg-success">精准测试</span>
+                                        {% else %}
+                                            <span class="badge bg-primary">普通测试</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ result.iq_score }}</td>
+                                    <td>{{ (result.time_spent / 60) | round(1) }}分钟</td>
+                                    <td>{{ (result.correct_count / result.total_questions * 100) | round(1) }}%</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.test-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0;
+    padding: 1.5rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.feature-list {
+    margin-bottom: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.feature-item i {
+    margin-right: 1rem;
+    width: 24px;
+    color: #666;
+}
+
+.table th {
+    border-top: none;
+    font-weight: 600;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+.badge {
+    padding: 0.5em 1em;
+    font-weight: 500;
+}
+</style>
+{% endblock %}

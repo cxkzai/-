@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">测试结果</h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h2 class="display-4 mb-3">IQ 得分: {{ iq_score }}</h2>
+                        <div class="progress-container mb-3">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" 
+                                     aria-valuenow="{{ (correct_count/total_questions*100)|round }}"
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                    <span class="progress-text">
+                                        {{ (correct_count/total_questions*100)|round }}%
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row text-center mb-4">
+                        <div class="col-md-4">
+                            <div class="stat-item">
+                                <h3>{{ correct_count }}/{{ total_questions }}</h3>
+                                <p class="text-muted">答对题目</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-item">
+                                <h3>{{ time_spent }}分钟</h3>
+                                <p class="text-muted">用时</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-item">
+                                <h3>{{ (correct_count/total_questions*100)|round }}%</h3>
+                                <p class="text-muted">正确率</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-message mb-4">
+                        {% if iq_score >= 130 %}
+                            <div class="alert alert-success">
+                                <h5>天才水平！</h5>
+                                <p>您的表现非常出色，智商处于极高水平。您展现出了卓越的逻辑思维和问题解决能力。</p>
+                            </div>
+                        {% elif iq_score >= 120 %}
+                            <div class="alert alert-info">
+                                <h5>优秀水平！</h5>
+                                <p>您的表现很好，智商处于优秀水平。您展现出了很强的分析和推理能力。</p>
+                            </div>
+                        {% elif iq_score >= 100 %}
+                            <div class="alert alert-primary">
+                                <h5>良好水平</h5>
+                                <p>您的表现不错，智商处于正常偏上水平。您具备良好的思维能力。</p>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning">
+                                <h5>继续努力</h5>
+                                <p>您还有提升的空间。建议多加练习，提高解题速度和准确率。</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="text-center">
+                        <a href="{{ url_for('home') }}" class="btn btn-primary">返回首页</a>
+                        <a href="{{ url_for('profile') }}" class="btn btn-outline-primary ms-2">查看历史记录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.stat-item {
+    padding: 1rem;
+}
+
+.stat-item h3 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.progress-container {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.progress {
+    height: 20px;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: {{ (correct_count/total_questions*100)|round }}%;
+    height: 100%;
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: width 0.6s ease;
+}
+
+.progress-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.result-message {
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.alert {
+    margin-bottom: 0;
+}
+</style>
+{% endblock %}
